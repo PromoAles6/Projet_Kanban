@@ -12,31 +12,34 @@ session_start();
 
 if(isset($_POST['email']) && isset($_POST['password'])){
     
-    if($username !== "" && $password !== "")
+    // Eviter la faille xss
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+
+    
+    if($email !== "" && $password !== "")
     {
         
-        $connection = new Database;
+        $connection = new Database or die('could not connect to databse');
         $dbh = $connection->getPDO();
 
-        $requete = "SELECT count(*) FROM user where 
-              email = '".$username."' and password = '".$password."' ";
-        $exec_requete = $dbh->query($requete);
-        $reponse      = $dbh->fetchAll($exec_requete);
-        $count = $reponse['count(*)'];
-        if($count!=0) // nom d'utilisateur et mot de passe correctes
-        {
-           $_SESSION['username'] = $username;
-           header('Location: principale.php');
-        }
-        else
-        {
-           header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-        }
+        $check = $dbh->prepare("SELECT email, password FROM user WHERE email = ?");
+        $check->execute(array($email));
+        $data = $check->fetch();
+        $row = $check->rowCount();
     }
-    else
+    if($row == 1)
     {
-       header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
-    }
+        if(filter_var($email, FILTER_VALIDATE_EMAIL));
+        {
+
+            if($data['password'] === $password)
+            {
+                $_SESSION['user'] = $data['email'];
+            }else header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+        }
+
+    }else header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
 }
 else
 {

@@ -5,7 +5,6 @@
 </head>
 <body>
 <?php
-require('database/PDOP.php');
 if (isset($_REQUEST['email'], $_REQUEST['password'])){
   // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
   $email = stripslashes($_REQUEST['email']);

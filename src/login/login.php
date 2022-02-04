@@ -11,7 +11,7 @@
 <body class="bg-primary">
     <div id="container-xl" class="d-flex justify-content-center py-4">
         <!-- zone de connexion -->
-        <form action="verification.php" action="POST" class="col-12 col-sm-10 col-md-8 col-lg-2 bg-warning text-dark p-4 rounded shadow">
+        <form action="verification.php" method="POST" class="col-12 col-sm-10 col-md-8 col-lg-2 bg-warning text-dark p-4 rounded shadow">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" requiered>
@@ -25,7 +25,7 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" value="LOGIN">Submit</button>
         </form>
         <?php
         if (isset($_GET['erreur'])) {

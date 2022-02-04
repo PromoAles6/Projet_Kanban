@@ -1,10 +1,23 @@
 <?php
-echo "c'est bon"; 
+
+use App\database\Database;
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require '../../vendor/autoload.php';
+
 session_start();
-include("../database/Database.php");
+
 if(isset($_POST['email']) && isset($_POST['password'])){
+    
     if($username !== "" && $password !== "")
     {
+        
+        $connection = new Database;
+        $dbh = $connection->getPDO();
+
         $requete = "SELECT count(*) FROM user where 
               email = '".$username."' and password = '".$password."' ";
         $exec_requete = $dbh->query($requete);
@@ -27,7 +40,6 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 }
 else
 {
-   header('Location: login.php');
+  header('Location: login.php');
 }
 ?>
-}

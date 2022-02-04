@@ -1,0 +1,27 @@
+body {
+    background-color: #d5bdaf;
+}
+
+h1 {
+    color: #0000008C;;
+    font-size: 16px;
+    margin-top: 3%;
+    margin-left: 1%;
+}
+
+.btn-outline-success:hover {
+
+    color: #fffff9;
+    border-color: #d5bdaf;
+    background-color: #d5bdaf;
+}
+
+.btn-outline-success {
+    border-color: #0000008C;
+    color: #0000008C;
+}
+
+.btn-light {
+    width: 15em;
+    color: #0000008C;
+}

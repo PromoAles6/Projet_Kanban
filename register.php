@@ -27,19 +27,21 @@ if (!empty($password) && !empty($email))
     </head>
     <body>
     <form method="post">
-    <div class='d-flex justify-content-center'>
-        <div class='d-flex flex-column bd-highlight mb-3'>
-        <label class="text-center">Email</label>
-            <input type="text" name="email"><br>
-            <label class="text-center">Mot de passe</label>
-            <input type="password" name="password"><br>
-            <div>
-            </div>
-
-            <br><br>
-       
-            <input type="submit" class="btn btn-secondary" value="Envoyer" >
         
+        <div class='d-flex justify-content-center'>
+            <div class='d-flex flex-column bd-highlight mb-3'>
+                
+                <label class="text-center">Email</label>
+                <input type="text" name="email"><br>
+
+                <label class="text-center">Mot de passe</label>
+                <input type="password" name="password"><br>
+            <div>
+        </div>
+        
+        <br><br>
+        
+        <input type="submit" class="btn btn-secondary" value="Envoyer" >
 </form>
     </body>
  </html>

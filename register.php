@@ -7,8 +7,10 @@ require 'vendor/autoload.php';
 
 use App\database\User;
 
+if (isset($_POST['password']) && isset($_POST['email'])){
 $password = $_POST['password'];
 $email = $_POST['email'];
+}
 
 if (!empty($password) && !empty($email))
 {

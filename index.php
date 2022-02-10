@@ -18,6 +18,8 @@ class Application {
 
     ];
 
+    const DEFAULT_ROUTE = 'projets';
+
     public function match($route_name){
 
         //Je vérifie si la clé existe dans la liste des pages autorisées
@@ -35,7 +37,7 @@ class Application {
         //Je récupère la route demandée dans l'URL
         //Si la page n'est pas spécifiée (ex: on arrive la première fois sur le site)
         //On redirige vers la page d'accueil
-        $route_name = $_GET['page'] ?? 'projets';
+        $route_name = $_GET['page'] ?? self::DEFAULT_ROUTE;
 
         //Je vérifie si la route demandée est autorisée
         $route_name = $this->match($route_name);

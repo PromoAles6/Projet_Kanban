@@ -10,12 +10,26 @@ require 'vendor/autoload.php';
 class Application
 {
     const AUTHORIZED_PAGES = [
-        'projets' =>'board',
-        'modal'=>'modal',
-        'inscription' => 'register',
-        'tableau' => 'tableau/index',
-        'board' => 'tableau/index'
-    ];
+        'projets' =>[
+            'controller'=>'BoardController',
+            'method'=>'index'],
+
+        'modal' =>[
+            'controller'=>'ModalController',
+            'method'=>'index'],
+
+        'inscription' => [
+            'controller'=>'RegisterController',
+            'method'=>'index'],
+
+        'tableau' =>[
+            'controller'=>'TableController',
+            'method'=>'index'],
+
+        'error404' =>[
+                'controller'=>'ErrorController',
+                'method'=>'error404']
+        ];
 
     const DEFAULT_ROUTE = 'projets';
 
@@ -23,12 +37,12 @@ class Application
     {
         // je vérifie sir la clef existe dans la liste des pages autorisées
         if (isset(self::AUTHORIZED_PAGES[$route_name])) {
-            $route_name = self::AUTHORIZED_PAGES[$route_name];
+            $route = self::AUTHORIZED_PAGES[$route_name];
         } else {
-            $route_name = '404';
+            $route = self::AUTHORIZED_PAGES['error404'];
         }
 
-        return $route_name;
+        return $route;
     }
 
     public function run()
@@ -39,12 +53,15 @@ class Application
         $route_name = $_GET['page'] ?? self::DEFAULT_ROUTE;
 
         // je vérifie si la route demandée existe
-        $route_name = $this->match($route_name);
+        $route = $this->match($route_name);
 
-        // on inclu le fichier qui correspond à la route demandée
-        include_once $route_name . '.php';
+        $controller_name = 'App\Controller\\'.$route['controller'];
+        $controller = new $controller_name();
+        $method_name = $route['method'];
+        $controller->$method_name();
+
+        dump($route);
     }
 }
-
 $application = new Application();
 $application->run();

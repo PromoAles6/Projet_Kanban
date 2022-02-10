@@ -17,6 +17,7 @@ class Application
     'tableau'=>'tableau/index',
     'board'=>'tableau/index'
 ];
+    const DEFAULT_ROUTE = 'projets';
 
     private function match($route_name)
     {
@@ -31,7 +32,7 @@ class Application
 
     public function run()
     {
-        $route_name= $_GET['page']?? 'projets';
+        $route_name= $_GET['page']?? self::DEFAULT_ROUTE;
         $route_name = $this->match($route_name);
         
        

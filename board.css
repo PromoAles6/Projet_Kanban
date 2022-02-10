@@ -18,3 +18,8 @@ h1{
 .btn-light{
     width: 15em;
 }
+.card{
+    background-color: #edede9;
+    margin: 3em 2em;
+}
+

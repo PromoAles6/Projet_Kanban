@@ -1,32 +1,25 @@
-body {
+body{
     background-color: #d5bdaf;
 }
-
-h1 {
-    color: #0000008C;;
-    font-size: 16px;
-    margin-top: 3%;
-    margin-left: 1%;
+h1{
+    color:#0000008C;
+    font-size: 20px;
+    margin-top: 1em;
+    margin-left: 1em;
 }
-
-.btn-outline-success:hover {
-
-    color: #fffff9;
-    border-color: #d5bdaf;
-    background-color: #d5bdaf;
-}
-
-.btn-outline-success {
-    border-color: #0000008C;
+.btn-outline-success{
     color: #0000008C;
+    border-color: #0000008C
 }
-
-.btn-light {
+.btn-outline-success:hover{
+    background-color: #d5bdaf;
+    border-color:#d5bdaf ;
+}
+.btn-light{
     width: 15em;
-    color: #0000008C;
 }
-
-.card {
+.card{
     background-color: #edede9;
     margin: 3em 2em;
 }
+

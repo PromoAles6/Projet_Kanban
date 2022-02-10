@@ -15,18 +15,10 @@ Class User
     }
     
     function addUser($email,$password){
-        $requete = $this->pdo->query("INSERT INTO user (email,password)
-        VALUES ( 
-            '$email',
-            '$password')
-            ");
+        $statement = $this->pdo->prepare("INSERT INTO user (email, password) VALUES ( :email , :password)") ; 
+        $statement->bindParam(':email', $_POST["email"]);
+        $statement->bindParam(':password', $_POST["password"]);
+        $statement->execute();
         }  
-    function deleteUser($email,$password)
-    {
-       $requete = $this->pdo->query("DELETE FROM user WHERE email=$mail, password=$password");
     }
-    function updateUser($password)
-    {
-        $requete = $this->pdo->query("UPDATE FROM user WHERE password=$password");
-    }
-    }
+    

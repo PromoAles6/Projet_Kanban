@@ -13,34 +13,58 @@ $pdo = $connection->getPDO();*/
 class Application
 {
     const AUTHORIZED_PAGES = [
-        'projets' => 'board',
-        'modal' => 'modal',
-        'inscription' => 'register',
-        'tableau' => 'tableau/index'
+        'projets' => [
+            'controller' => 'BoardController',
+            'method' => 'index'
+        ],
+        'modal' => [
+            'controller' => 'ModalController',
+            'method' => 'index'
+        ],
+        'inscription' => [
+            'controller' => 'RegisterController',
+            'method' => 'index'
+        ],
+        'tableau' => [
+            'controller' => 'TableController',
+            'method' => 'index'
+        ],
+        'error404' => [
+            'controller' => 'ErrorController',
+            'method' => 'error404'
+        ]
     ];
+
+    const DEFAULT_ROUTE = 'board';
 
 
     public function match($route_name)
     {
-        if (isset(self::AUTHORIZED_PAGES[$route_name]))
-        {
-            $route_name = self::AUTHORIZED_PAGES[$route_name];
-        }
-        else
-        {
-            $route_name = '404';
+        // je vérifie sir la clef existe dans la liste des pages autorisées
+        if (isset(self::AUTHORIZED_PAGES[$route_name])) {
+            $route = self::AUTHORIZED_PAGES[$route_name];
+        } else {
+            $route = self::AUTHORIZED_PAGES['error404'];
         }
 
-        return $route_name;
+        return $route;
     }
 
 
     public function run()
     {
-        $route_name = $_GET['page'] ?? 'board';
-        $route_name = $this->match($route_name);
+        // je récupère la route demandée dans l'url
+        // si la page n'est pas spécifiée (ex: on arrive pour la première fois sur le site)
+        // on redirige vers la page d'accueil
+        $route_name = $_GET['page'] ?? self::DEFAULT_ROUTE;
 
-        include_once($route_name.'.php');
+        // je vérifie si la route demandée existe
+        $route = $this->match($route_name);
+        
+        $controller_name = "App\Controller\\".$route['controller'];
+        $controller = new $controller_name();
+        $method_name = $route['method'];
+        $controller->$method_name();
     }
 }
 

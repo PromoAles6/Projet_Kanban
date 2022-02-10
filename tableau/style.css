@@ -1,0 +1,47 @@
+.list{
+    background-color: rgb(157, 184, 235);
+    width: 300px;
+    margin: 10px;
+    border: 1px solid black ;
+    border-radius: 10px;
+    padding: 10px;
+}
+h2{
+    text-align: center;
+    font-size: 24px;
+}
+
+.card{
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-size: 18px;
+    margin: 0;
+}
+
+.list .btn{
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .4);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-list{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-list .btn,.add-list input{
+    height: 40px;
+    margin: 10px;
+}

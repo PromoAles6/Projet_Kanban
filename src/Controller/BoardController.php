@@ -2,16 +2,14 @@
 
 namespace App\Controller;
 
-class BoardController {
+use App\Controller\AbstractController;
+
+
+class BoardController extends AbstractController
+{
 
     public function index()
     {
-        $this-> render('board.php');
-
-    }
-
-    private function render($view_path)
-    {
-        include_once __DIR__.'/../View/'.$view_path;
+        $this->render('tableau/index.php');
     }
 }

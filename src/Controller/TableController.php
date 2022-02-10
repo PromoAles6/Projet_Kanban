@@ -2,16 +2,13 @@
 
 namespace App\Controller;
 
-class TableController {
+use App\Controller\AbstractController;
 
-    public function index()
+class TableController extends AbstractController
+{
+
+    protected function index()
     {
-        $this-> render('index.php');
-
-    }
-
-    private function render($view_path)
-    {
-        include_once __DIR__.'/../View/'.$view_path;
+        $this->render('index.php');
     }
 }

@@ -25,7 +25,11 @@ class Application
             'controller' => 'TableController',
             'method' => 'index'
         ],
-        
+        'error404' => [
+            'controller' => 'ErrorController',
+            'method' => 'error404'
+        ]
+
     ];
 
     const DEFAULT_ROUTE = 'projets';
@@ -36,7 +40,7 @@ class Application
         if (isset(self::AUTHORIZED_PAGES[$route_name])) {
             $route = self::AUTHORIZED_PAGES[$route_name];
         } else {
-            $route = '404';
+            $route = self::AUTHORIZED_PAGES['error404'];
         }
 
         return $route;

@@ -2,16 +2,13 @@
 
 namespace App\Controller;
 
-class ModalController {
+use App\Controller\AbstractController;
+
+class ModalController extends AbstractController
+{
 
     public function index()
     {
-        $this-> render('modal.php');
-
-    }
-
-    private function render($view_path)
-    {
-        include_once __DIR__.'/../View/'.$view_path;
+        $this->render('modal.php');
     }
 }

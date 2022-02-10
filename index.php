@@ -10,13 +10,27 @@ require 'vendor/autoload.php';
 
 // Application 
 class Application {
-    
         const AUTHORIZED_PAGES = [
-            'projets'=> 'board',
-            'modal' => 'modal',
-            'inscription' => 'register',
-            'tableau' => 'tableau/index',
-            'board' => 'tableau/index'
+            'projets'=> [
+                'controller'=>'BoardController',
+                'method'=>'index'],
+            'modal' =>[
+                'controller'=> 'ModalController',
+                'method' => 'index'
+                ],
+            'register' =>[
+                 'controller'=> 'RegisterController',
+                'method' => 'index'
+                ],
+            'tableau' =>[
+                'controller'=> 'TableController',
+                'method' => 'index'
+            ],
+            'error404' =>[
+                'controller'=> 'ErrorController',
+                'method' => 'error404'
+                ]
+           
         ]; 
 
         public function match($route_name) 
@@ -24,20 +38,25 @@ class Application {
      // je verifie si la clef existe dans la liste des pages autorisés 
             if (isset(self::AUTHORIZED_PAGES[$route_name])) 
                 {
-                $route_name = self::AUTHORIZED_PAGES[$route_name];
+                $route = self::AUTHORIZED_PAGES[$route_name];
                 }
             else    
             {
-                $route_name = '404';
+                $route =  self::AUTHORIZED_PAGES['error404'];
             }
-            return $route_name;
+            return $route;
         }
     
     public function run()
     {
         $route_name = $_GET['page'] ?? 'projets';
-        $route_name = $this->match($route_name);
-        include_once $route_name .'.php';
+        $route = $this->match($route_name);
+        // J'instancie le controleur correspondant a la route demandée
+        $controller_name = 'App\Controller\\' . $route['controller'];
+        $controller = new $controller_name();
+        $method_name = $route['method'];
+        $controller->$method_name();
+
     }
     
 }

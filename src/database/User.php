@@ -3,8 +3,6 @@ namespace App\database;
 
 use App\database\Database;
 
-
-
 Class User
 {
     private $pdo;

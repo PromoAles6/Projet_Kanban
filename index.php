@@ -16,6 +16,8 @@ class Application
             'tableau' => 'tableau/index',
             'board' => 'tableau/index'
         ];
+
+        const DEFAUT_ROUTE = 'projets';
         
         //je vérifie si la clef existe dans la liste des pages autorisées
         private function match($route_name){
@@ -32,7 +34,7 @@ class Application
         //je récupère la route demandée dans l'url
         //si la page n'est pas spécifiée
         //on redirige sur la page d'accueil
-        $route_name = $_GET['page'] ?? 'projets';
+        $route_name = $_GET['page'] ?? self::DEFAUT_ROUTE;
 
 
         $route_name = $this->match($route_name);

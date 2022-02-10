@@ -26,7 +26,6 @@ class Application
         } else {
             $route_name = '404';
         }
-
         return $route_name;
     }
 

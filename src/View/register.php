@@ -7,6 +7,8 @@ require 'vendor/autoload.php';
 
 use App\database\User;
 
+
+
 $password = $_POST['password'];
 $email = $_POST['email'];
 
@@ -43,3 +45,4 @@ if (!empty($password) && !empty($email))
 </form>
     </body>
  </html>
+

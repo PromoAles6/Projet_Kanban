@@ -25,7 +25,7 @@ class Database
     private function getconfig()
     {
         // On récupere les identifiants de la Base de données
-        $config = parse_ini_file('config.ini', true);
+        $config = parse_ini_file('./config.ini', true);
         // Erreur pour vor si le fichier n'existe pas 
         if (!$config) {
             throw new \Exception("Le fichier config.ini n'existe pas");

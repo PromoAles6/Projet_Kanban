@@ -91,30 +91,17 @@ $db->Connect();
     <h1>VOS ESPACES DE TRAVAIL</h1>
     <!---------------------------card------------------------------>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">titre</h5>
-        <p class="card-text"></p>
-      </div>
+      <?php foreach($boards as $board): ?>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><?= $board->getName() ?></h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      <?php endforeach ?>
     </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Titre</h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Titre</h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

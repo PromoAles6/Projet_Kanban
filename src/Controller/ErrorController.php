@@ -12,6 +12,6 @@ class ErrorController extends AbstractController
         // $this->sendJson([
         // 'status' => 404,
         //'message' => 'Page not found'
-        //]);
+        // ]);
     }
 }

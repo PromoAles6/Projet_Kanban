@@ -13,7 +13,7 @@ $Test->connection();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,15 +27,16 @@ $Test->connection();
 <body>
 
 <div class="list-group">
+
   <a href="#" class="list-group-item list-group-item-action">premiere liste</a>
   <div style="display: flex; flex-direction: column;">
-  <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">card1</button></div>
+  <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"></button></div>
   <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">card2</button></div>
   <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">card3</button></div>
   <div><a href="#" class="list-group-item list-group-item-action">Ajouter une nouvelle carte</a></div>
 </div>  
-</div>
 
+</div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

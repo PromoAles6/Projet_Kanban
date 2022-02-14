@@ -28,70 +28,11 @@
         />
         <button type="submit" class="btn btn-primary">Ajouter</button>
       </form>
-
-      <div class="container-list">
+      
+      <?php foreach ($lists as $list) :?>
         <div class="list">
-          <h2>Titre liste</h2>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <a href="#" class="btn">+ Ajouter une carte</a>
-        </div>
-
-        <div class="list">
-          <h2>Titre liste</h2>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <a href="#" class="btn">+ Ajouter une carte</a>
-        </div>
-
-        <div class="list">
-          <h2>Titre liste</h2>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <a href="#" class="btn">+ Ajouter une carte</a>
-        </div>
-
-        <div class="list">
-          <h2>Titre liste</h2>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
-          <div class="card">
-            <h3>Titre carte</h3>
-          </div>
+          <h2><?= $list->getName() ?></h2>
+      <?php endforeach; ?>
           <div class="card">
             <h3>Titre carte</h3>
           </div>

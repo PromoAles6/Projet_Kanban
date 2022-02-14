@@ -26,16 +26,19 @@ $Test->connection();
 </head>
 <body>
 
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">premiere liste</a>
-  <div style="display: flex; flex-direction: column;">
-  <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">card1</button></div>
-  <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">card2</button></div>
-  <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">card3</button></div>
-  <div><a href="#" class="list-group-item list-group-item-action">Ajouter une nouvelle carte</a></div>
-</div>  
-</div>
-
+  
+  <div class="list-group">
+    <?php foreach ($modals as $modal): ?>
+      <div style="display: flex; flex-direction: column;">
+        <a href="#" class="list-group-item list-group-item-action"><?= $modal->getName(); ?></a>
+        <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">card1</button></div>
+      <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">card2</button></div>
+      <div><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">card3</button></div>
+      <div><a href="#" class="list-group-item list-group-item-action">Ajouter une nouvelle carte</a></div>
+    </div>  
+  </div>
+<?php endforeach; ?>
+  
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

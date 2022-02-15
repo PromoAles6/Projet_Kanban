@@ -15,7 +15,7 @@ class Application
             'controller' => 'BoardController',
             'method' => 'index'
         ],
-        'modal'=> [
+        'modal' => [
             'controller' => 'ModalController',
             'method' => 'index'
         ],
@@ -65,7 +65,6 @@ class Application
         // j'appelle la méthode correspondante à la route demandée
         $method_name = $route['method'];
         $controller->$method_name();
-
     }
 }
 

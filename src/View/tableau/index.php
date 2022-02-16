@@ -131,9 +131,9 @@
           <?php endforeach ?>
           </div>
         </div>
+        <?php endforeach ?>
       </div>
 
-    <?php endforeach ?>
   </div>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->

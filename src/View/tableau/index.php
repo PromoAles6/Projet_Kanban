@@ -32,13 +32,11 @@
             <h2><?= $list->getName() ?></h2>
             
             <!-- Boucle des cards -->
-            <?php foreach ($cards as $card) : ?>
+            <?php foreach ($list->cards as $card) : ?>
               <div class="card">
                 <div>
-                  <?php if ($card->getList_id() === $list->getId()) : ?>
                     <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
-                  <?php endif ?>
-              </div>
+                </div>
 
 
               <!-- Modal with id -->
@@ -128,7 +126,7 @@
               </div> -->
 
 
-            </div>
+              </div>
             <?php endforeach ?>
             <!-- fin boucle cards -->
 

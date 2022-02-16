@@ -15,9 +15,7 @@
 </head>
 
 <body>
-
   <div class="container-xl">
-
     <form method="POST" action="" class="add-list">
       <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="title_list" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>

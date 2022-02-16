@@ -5,15 +5,20 @@ namespace App\Model;
 use PDO;
 use App\database\Database;
 
-class BoardModel
+class ListModel
 {
+
     protected $id;
 
     protected $name;
 
+    protected $sort;
+
+    protected $board_id;
+
     protected $pdo;
 
-    const TABLE_NAME = 'board';
+    const TABLE_NAME = 'list';
 
     public function __construct()
     {
@@ -23,17 +28,23 @@ class BoardModel
 
     public function findAll()
     {
-        $sql = 'SELECT
-                `id`
-                ,`name`
-                FROM ' . self::TABLE_NAME . '
-                ORDER BY `id` ASC;
-        ';
+
+
+        $sql= 'SELECT 
+               `id`
+               ,`name`
+               ,`sort`
+               ,`board_id`
+               FROM ' . self::TABLE_NAME .'
+               ORDER BY `id` ASC;
+               ';
 
         $pdoStatement = $this->pdo->query($sql);
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
+
     }
+
 
     /**
      * Get the value of id
@@ -68,11 +79,30 @@ class BoardModel
      *
      * @return  self
      */ 
-    public function setName(String $name)
+    public function setName($name)
     {
         $this->name = $name;
 
         return $this;
     }
-}
 
+    /**
+     * Get the value of board_id
+     */ 
+    public function getBoard_id()
+    {
+        return $this->board_id;
+    }
+
+    /**
+     * Set the value of board_id
+     *
+     * @return  self
+     */ 
+    public function setBoard_id($board_id)
+    {
+        $this->board_id = $board_id;
+
+        return $this;
+    }
+}

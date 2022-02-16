@@ -13,7 +13,7 @@ $Test->connection();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,9 @@ $Test->connection();
     <title>Document</title>
 </head>
 <body>
-
+<?php foreach($modals as $card): ?>
+  <h5><?= $card->getName() ?></h5>
+  <?php endforeach ?>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">premiere liste</a>
   <div style="display: flex; flex-direction: column;">

@@ -11,32 +11,36 @@
   <link href="list.css" rel="stylesheet" />
   <link href="modal.css" rel="stylesheet" />
   <title>Hello, world!</title>
-
+  
 </head>
 
 <body>
 
   <div class="container-xl">
 
-    <form method="POST" action="" class="add-list">
-      <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="title_list" aria-describedby="emailHelp" />
+    <form id="newListForm" method="POST" action="" class="add-list">
+      <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="titleList" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
 
+    <div class="oversort">
+      <input type="text" class="newlistinput" name="newlistname" placeholder="Ajouter une nouvelle liste" />
+    </div>
 
-    <div class="container-list">
+    
+    <div id="listContainer" class="container-list">
       <!-- Boucle des liste -->
-      <?php foreach ($lists as $list) : ?>
-        <div class="list">
-
-          <h2><?= $list->getName() ?></h2>
-
-          <!-- Boucle des cards -->
-          <?php foreach ($list->cards as $card) : ?>
-            <div class="card">
-              <div>
-                <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
-              </div>
+        <?php foreach ($lists as $list) : ?>
+          <div class="list">
+            
+            <h2><?= $list->getName() ?></h2>
+            
+            <!-- Boucle des cards -->
+            <?php foreach ($list->cards as $card) : ?>
+              <div class="card">
+                <div>
+                    <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
+                </div>
 
 
               <!-- Modal with id -->
@@ -85,7 +89,7 @@
 
 
               <!-- Modal without id -->
-              <!-- <div class="modal fade" id="list<?= $list->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <!-- <div class="modal fade" id="list<?=$list->getId()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     
@@ -126,16 +130,16 @@
               </div> -->
 
 
-            </div>
-          <?php endforeach ?>
-          <!-- fin boucle cards -->
+              </div>
+            <?php endforeach ?>
+            <!-- fin boucle cards -->
 
-          <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?= $list->getId() ?>" data-bs-whatever="@mdo">Ajouter une carte</button>
+            <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?=$list->getId()?>" data-bs-whatever="@mdo">Ajouter une carte</button>
 
-        </div>
-      <?php endforeach ?>
-      <!-- fin boucle des listes -->
-    </div>
+          </div>
+        <?php endforeach ?>
+        <!-- fin boucle des listes -->
+      </div>
 
   </div>
 
@@ -144,10 +148,10 @@
 
   <!-- Script Jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script src="js.js"></script>
-
-  <script>
+  
+  <!-- jquery ui -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <!-- <script>
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
     var myButton = document.getElementById('addCard')
@@ -157,47 +161,119 @@
     })
 
     myModal.addEventListener('shown.bs.modal', function() {
-        myButton.focus()
-        console.log('test')
-      }) <
-      script >
-      $(document).ready(function() {
-
-        $("#submit").click(function() {
-
-          var name = $("#title_list").val();
-          var board_id = 1;
-          var sort = 1;
-
-          if (name == '' || board_id == '1' || sort == '1') {
-            alert("Please fill all fields.");
-            return false;
-          }
-
-          $.ajax({
-            type: "POST",
-            url: "store.php",
-            data: {
-              name = name,
-              board_id: board_id,
-              sort = sort,
-            },
-            cache: false,
-            success: function(data) {
-              alert(data);
-            },
-            error: function(xhr, status, error) {
-              console.error(xhr);
-            }
-          });
-
+      myButton.focus()
+      console.log('test')
+    })
+    <script>
+        $(document).ready(function() {
+ 
+            $("#submit").click(function() {
+ 
+                var name = $("#title_list").val();
+                var board_id = 1;
+                var sort = 1;
+ 
+                if(name==''|| board_id =='1'|| sort=='1') {
+                    alert("Please fill all fields.");
+                    return false;
+                }
+ 
+                $.ajax({
+                    type: "POST",
+                    url: "store.php",
+                    data: {
+                        name = name,
+                        board_id: board_id,
+                        sort=sort,
+                    },
+                    cache: false,
+                    success: function(data) {
+                        alert(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr);
+                    }
+                });
+                 
+            });
         });
-      });
-  </script>
-  </script>
+    </script>
+  </script> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- script pour le drag and drop -->
+  <script>
 
+  function updateListSortables(){
+    $( ".sortable" ).sortable({
+      connectWith: ".sortable",
+      items: ":not(.nodrag)",
+      placeholder: "sortable-placeholder ui-corner-all",
+      change: function() {
+          var list = $(this).closest('.sortable');
+          var anchorBottom = $(list).find('.anchorBottom');
+          $(list).append($(anchorBottom).detach());
+        }
+    });
+    
+    // Pour ajouter une nouvelle liste
+    $('input[name="newlistitem"]').unbind().keyup(function(event){
+      if(event.key == "Enter" || event.keyCode == "13"){
+        $(this).before('<div>' + $(this).val() + '</div>');
+        $(this).val('');
+      }
+      
+    });
+  }
+
+
+  $(document).ready(function(){
+    updateListSortables();
+    $(".oversort").sortable({items: ":not(.nodrag)", placeholder: "sortable-placeholder" });
+    
+
+
+    // key listener to add new lists
+    $('input[name="newlistname"]').keyup(function(event){
+      if(event.key == "Enter" || event.keyCode == "13"){
+        $(this).before('<div class="sortable"><h5 class="nodrag header">' + $(this).val() + '</h5><input type="text" class="nodrag anchorBottom newlistitem" name="newlistitem" placeholder="Ajouter une nouvelle carte" /></div>');
+        $(this).val('');
+        updateListSortables();
+        
+        var oversort = $(this).closest('.oversort');
+        $( oversort ).scrollLeft( $(oversort).prop("scrollWidth") - $(oversort).width() );
+      }
+      
+    });
+
+    // ajouter une liste
+    $('#newListForm').submit(function(event){
+      // j'empêche de rechargement de la page
+      event.preventDefault();
+      // je récupère le nom de la liste dans l'input
+      const listName = $("#titleList").val().trim();
+
+      // si le nom de la liste est vide, je ne fais rien
+      if(listName == "")
+      {
+        return false;
+      }
+
+      // je créé une nouvelle liste
+      $newList = `
+        <div class="list">
+            <h2>${listName}</h2>
+        </div>
+      `;
+
+      // je la rajoute dans la div avec l'id listContainer
+      $("#listContainer").append($newList);
+
+      // je vide l'input
+      $("#titleList").val('');
+    })
+  });   
+
+  </script>
 </body>
 
 </html>

@@ -21,7 +21,7 @@
     <div class="oversort">
       
     </div>
-      <button type="submit" class="btn btn-primary">Ajouter</button>
+      
     </form>
 <!-- TEST ADD LISTS  AND CARDS-->
     <div class="oversort">

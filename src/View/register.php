@@ -6,14 +6,17 @@ error_reporting(E_ALL);
 require 'vendor/autoload.php';
 
 use App\database\User;
-
-$password = $_POST['password'];
-$email = $_POST['email'];
-
-if (!empty($password) && !empty($email))
+if ($_POST)
 {
-    $enregistrer = new User;
-    $enregistrer->adduser($email,$password);
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+    if (!empty($password) && !empty($email))
+    {
+
+        $enregistrer = new User;
+        $enregistrer->adduser($email,$password);
+    }
 }
 ?>
     <!DOCTYPE html>

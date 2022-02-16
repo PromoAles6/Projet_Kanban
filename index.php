@@ -30,6 +30,10 @@ class Application
         'error404' => [
             'controller' => 'ErrorController',
             'method' => 'error404'
+        ],
+        'connection' => [
+            'controller' => 'LoginController',
+            'method' => 'index'
         ]
     ];
 

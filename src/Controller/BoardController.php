@@ -22,3 +22,4 @@ class BoardController extends AbstractController
         ]);
     }
 }
+

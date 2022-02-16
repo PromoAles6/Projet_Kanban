@@ -23,12 +23,12 @@ h3{
     margin: 0;
 }
 
-.list .btn{
+/* .list .btn{
     background-color: rgba(0, 0, 0, .1);
     box-shadow: 0 0 3px rgba(0, 0, 0, .4);
     margin-top: 5px;
     margin-bottom: 5px;
-}
+} */
 
 .container-list{
     display: flex;

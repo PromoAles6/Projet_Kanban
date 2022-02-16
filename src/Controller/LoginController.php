@@ -3,9 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\AbstractController;
-use App\Model\ModalModel;
 
-class ModalController extends AbstractController
+class LoginController extends AbstractController
 {
     public function index()
     {
@@ -15,11 +14,6 @@ class ModalController extends AbstractController
         // vérifier que l'utilisateur a les droits
         // etc...
 
-        $card_model= new ModalModel();
-        $cards = $card_model->findAll();
-        $this->render('modal.php', [
-            'cards' => $cards
-        ]);
-
+        $this->render('login/login.php');
     }
 }

@@ -6,7 +6,7 @@ use PDO;
 
 use App\database\Database;
 
-class ModalModel
+class CardModel
 {
     protected $id;
     

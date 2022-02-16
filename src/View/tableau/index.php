@@ -119,8 +119,8 @@
             <?php endforeach ?>
             <!-- fin boucle cards -->
 
-            <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?=$list->getId()?>" data-bs-whatever="@mdo">Ajouter une carte</button>
-
+            <!-- <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?=$list->getId()?>" data-bs-whatever="@mdo">Ajouter une carte</button> -->
+            <input type="text" class="nodrag anchorBottom newlistitem form-control" name="newlistitem" placeholder="Ajouter une nouvelle carte" />
           </div>
         <?php endforeach ?>
         <!-- fin boucle des listes -->
@@ -199,15 +199,6 @@
           $(list).append($(anchorBottom).detach());
         }
     });
-    
-    // Pour ajouter une nouvelle liste
-    $('input[name="newlistitem"]').unbind().keyup(function(event){
-      if(event.key == "Enter" || event.keyCode == "13"){
-        $(this).before('<div>' + $(this).val() + '</div>');
-        $(this).val('');
-      }
-      
-    });
   }
 
 
@@ -218,17 +209,46 @@
 
 
     // key listener to add new lists
-    $('input[name="newlistname"]').keyup(function(event){
-      if(event.key == "Enter" || event.keyCode == "13"){
-        $(this).before('<div class="sortable"><h5 class="nodrag header">' + $(this).val() + '</h5><input type="text" class="nodrag anchorBottom newlistitem" name="newlistitem" placeholder="Ajouter une nouvelle carte" /></div>');
-        $(this).val('');
-        updateListSortables();
+    // $('input[name="newlistname"]').keyup(function(event){
+    //   if(event.key == "Enter" || event.keyCode == "13"){
+    //     updateListSortables();
         
-        var oversort = $(this).closest('.oversort');
-        $( oversort ).scrollLeft( $(oversort).prop("scrollWidth") - $(oversort).width() );
-      }
+    //     var oversort = $(this).closest('.oversort');
+    //     $( oversort ).scrollLeft( $(oversort).prop("scrollWidth") - $(oversort).width() );
+    //   }
       
-    });
+    // });
+
+    // function pour ajouter une card
+    function addNewCard(event) {
+      // si la touche tapée est entrée (clavier normal ou numérique)
+      if(event.key == "Enter" || event.keyCode == "13"){
+        // j'ajoute une nouvelle card juste avant l'input
+        const cardContent = $(this).val().trim();
+        if (cardContent == "") {
+          return false;
+        }
+
+        // je créé une card
+        const newCard = `
+          <div class="card">
+            <div>
+                <button type="button" class="btn btn-">${cardContent}</button>
+            </div>
+          </div>      
+        `;
+
+        // j'ajoute la card
+        $(this).before(newCard);
+
+        // je vide l'input
+        $(this).val('');
+      }
+    }
+
+    // event pour ajouter une cards
+    $('input[name="newlistitem"]').unbind().keyup(addNewCard);
+
 
     // ajouter une liste
     $('#newListForm').submit(function(event){
@@ -243,12 +263,28 @@
         return false;
       }
 
+      // je créé un formulaire d'ajout de card
+      $newCardForm = $('<input>')
+      // je set les attribut de mon input
+        .attr({
+            type: 'text',
+            class: 'nodrag anchorBottom newlistitem form-control',
+            name: 'newlistitem',
+            placeholder: 'Ajouter une nouvelle carte'
+        })
+      ;
+
+      // j'ajoute l'event à mon formulaire
+      $($newCardForm).unbind().keyup(addNewCard)
+      
       // je créé une nouvelle liste
-      $newList = `
-        <div class="list">
-            <h2>${listName}</h2>
-        </div>
-      `;
+      $newList = $('<div>')
+        .addClass('list')
+        // j'ajoute le titre de la liste
+        .append('<h2>'+listName+'</h2>')
+        // j'ajoute le formulaire d'ajout de card
+        .append($newCardForm)
+      ;
 
       // je la rajoute dans la div avec l'id listContainer
       $("#listContainer").append($newList);

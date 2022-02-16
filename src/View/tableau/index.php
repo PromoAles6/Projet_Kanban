@@ -37,8 +37,8 @@
             <div>
                 <?php if ($card->getList_id() === $list->getId()) : ?>
                   <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
-                <?php endif ?>
-            </div>
+                  <?php endif ?>
+                </div>
 
 
             <!-- Modal with id -->

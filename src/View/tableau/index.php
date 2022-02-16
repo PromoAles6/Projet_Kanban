@@ -22,23 +22,18 @@
       <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="titleList" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
-
-    <div class="oversort">
-      <input type="text" class="newlistinput" name="newlistname" placeholder="Ajouter une nouvelle liste" />
-    </div>
-
     
     <div id="listContainer" class="container-list">
       <!-- Boucle des liste -->
         <?php foreach ($lists as $list) : ?>
-          <div class="list">
+          <div class="list sortable">
             
-            <h2><?= $list->getName() ?></h2>
+            <h2 class="nodrag"><?= $list->getName() ?></h2>
             
             <!-- Boucle des cards -->
             <?php foreach ($list->cards as $card) : ?>
               <div class="card">
-                <div>
+                <div class="nodrag">
                     <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
                 </div>
 
@@ -201,115 +196,8 @@
   </script> -->
 
   <!-- script pour le drag and drop -->
-  <script>
+  <script src="assets/js/board.js"></script>
 
-  function updateListSortables(){
-    $( ".sortable" ).sortable({
-      connectWith: ".sortable",
-      items: ":not(.nodrag)",
-      placeholder: "sortable-placeholder ui-corner-all",
-      change: function() {
-          var list = $(this).closest('.sortable');
-          var anchorBottom = $(list).find('.anchorBottom');
-          $(list).append($(anchorBottom).detach());
-        }
-    });
-  }
-
-
-  $(document).ready(function(){
-    updateListSortables();
-    $(".oversort").sortable({items: ":not(.nodrag)", placeholder: "sortable-placeholder" });
-    
-
-
-    // key listener to add new lists
-    // $('input[name="newlistname"]').keyup(function(event){
-    //   if(event.key == "Enter" || event.keyCode == "13"){
-    //     updateListSortables();
-        
-    //     var oversort = $(this).closest('.oversort');
-    //     $( oversort ).scrollLeft( $(oversort).prop("scrollWidth") - $(oversort).width() );
-    //   }
-      
-    // });
-
-    // function pour ajouter une card
-    function addNewCard(event) {
-      // si la touche tapée est entrée (clavier normal ou numérique)
-      if(event.key == "Enter" || event.keyCode == "13"){
-        // j'ajoute une nouvelle card juste avant l'input
-        const cardContent = $(this).val().trim();
-        if (cardContent == "") {
-          return false;
-        }
-
-        // je créé une card
-        const newCard = `
-          <div class="card">
-            <div>
-                <button type="button" class="btn btn-">${cardContent}</button>
-            </div>
-          </div>      
-        `;
-
-        // j'ajoute la card
-        $(this).before(newCard);
-
-        // je vide l'input
-        $(this).val('');
-      }
-    }
-
-    // event pour ajouter une cards
-    $('input[name="newlistitem"]').unbind().keyup(addNewCard);
-
-
-    // ajouter une liste
-    $('#newListForm').submit(function(event){
-      // j'empêche de rechargement de la page
-      event.preventDefault();
-      // je récupère le nom de la liste dans l'input
-      const listName = $("#titleList").val().trim();
-
-      // si le nom de la liste est vide, je ne fais rien
-      if(listName == "")
-      {
-        return false;
-      }
-
-      // je créé un formulaire d'ajout de card
-      $newCardForm = $('<input>')
-      // je set les attribut de mon input
-        .attr({
-            type: 'text',
-            class: 'nodrag anchorBottom newlistitem form-control',
-            name: 'newlistitem',
-            placeholder: 'Ajouter une nouvelle carte'
-        })
-      ;
-
-      // j'ajoute l'event à mon formulaire
-      $($newCardForm).unbind().keyup(addNewCard)
-      
-      // je créé une nouvelle liste
-      $newList = $('<div>')
-        .addClass('list')
-        // j'ajoute le titre de la liste
-        .append('<h2>'+listName+'</h2>')
-        // j'ajoute le formulaire d'ajout de card
-        .append($newCardForm)
-      ;
-
-      // je la rajoute dans la div avec l'id listContainer
-      $("#listContainer").append($newList);
-
-      // je vide l'input
-      $("#titleList").val('');
-    })
-  });   
-
-  </script>
 </body>
 
 </html>

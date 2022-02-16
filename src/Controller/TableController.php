@@ -21,7 +21,7 @@ class TableController extends AbstractController
 
         $this->render('tableau/index.php', [
             'list' => $list,
-            'modals' => $cards
+            'cards' => $cards
         ]);
     }
 }

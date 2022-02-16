@@ -24,7 +24,7 @@
     </form>
     
     <div id="listContainer" class="container-list">
-      <!-- Boucle des liste -->
+        <!-- Boucle des liste -->
         <?php foreach ($lists as $list) : ?>
           <div class="list sortable">
             
@@ -38,8 +38,8 @@
                 </div>
 
 
-              <!-- Modal with id -->
-              <!-- <div class="modal fade" id="modal<?= $card->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal with id -->
+                <!-- <div class="modal fade" id="modal<?= $card->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     
@@ -47,18 +47,14 @@
                       <input class="modal-title" id="exampleModalLabel" placeholder="titre carte" value="<?= $card->getName() ?> "></input>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
                     <div class="modal-body">
                       <form>
-
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label"></label>
                           <textarea class="form-control" id="message-text" placeholder="rentrez votre description"><?= $card->getContent() ?> </textarea>
                         </div>
-
                       </form>
                     </div>
-
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">enregister</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">supprimer</button>
@@ -72,11 +68,8 @@
                           <button type="button" class="btn btn-danger">rouge</button>
                           <button type="button" class="btn btn-primary">bleu</button>
                         </div>
-
                       </div>
-
                     </div>
-
                   </div>
                 </div>
               </div> -->
@@ -92,18 +85,14 @@
                       <input class="modal-title" id="exampleModalLabel" placeholder="titre carte" value=""></input>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
                     <div class="modal-body">
                       <form>
-
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label"></label>
                           <textarea class="form-control" id="message-text" placeholder="rentrez votre description"></textarea>
                         </div>
-
                       </form>
                     </div>
-
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">enregister</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">supprimer</button>
@@ -116,10 +105,8 @@
                           <button type="button" class="btn btn-danger">rouge</button>
                           <button type="button" class="btn btn-primary">bleu</button>
                         </div>
-
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div> -->

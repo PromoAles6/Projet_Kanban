@@ -36,9 +36,9 @@ function addNewCard(event) {
     // je créé une card
     const newCard = `
         <div class="card">
-        <div class="nodrag">
-            <button type="button" class="btn btn-">${cardContent}</button>
-        </div>
+            <div class="nodrag">
+                <button type="button" class="btn btn-">${cardContent}</button>
+            </div>
         </div>      
     `;
 

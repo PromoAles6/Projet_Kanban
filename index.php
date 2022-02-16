@@ -23,6 +23,10 @@ class Application
             'controller' => 'RegisterController',
             'method' => 'index'
         ],
+        'connexion' => [
+            'controller' => 'LoginController',
+            'method' => 'index'
+        ],
         'tableau' => [
             'controller' => 'TableController',
             'method' => 'index'

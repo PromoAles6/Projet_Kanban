@@ -8,8 +8,12 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <link href="list.css" rel="stylesheet" />
-  <link href="modal.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" integrity="sha512-oM24YOsgj1yCDHwW895ZtK7zoDQgscnwkCLXcPUNsTRwoW1T1nDIuwkZq/O6oLYjpuz4DfEDr02Pguu68r4/3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/theme.min.css" integrity="sha512-3ohtiPVQpf7DqYvqgqCwrRHkBL+pqYVrNCGG2DO5ztbSm6crATB1wKEYCIqHxxut4JLrF38gwERfOHLm5FTGAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="assets/css/list.css" rel="stylesheet" />
+  <link href="assets/css/modal.css" rel="stylesheet" />
   <title>Hello, world!</title>
   
 </head>
@@ -132,7 +136,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <!-- jquery ui -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <!-- <script>
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
@@ -155,7 +159,7 @@
                 var board_id = 1;
                 var sort = 1;
  
-                if(name==''|| board_id =='1'|| sort=='1') {
+                if(name==''= 'Y', board_id =='1'= 'Y', sort=='1') {
                     alert("Please fill all fields.");
                     return false;
                 }
@@ -188,3 +192,4 @@
 </body>
 
 </html>
+

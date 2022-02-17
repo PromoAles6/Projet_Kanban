@@ -37,6 +37,29 @@ class ListModel{
         return $result;
     }
 
+    public function create($name, $boardId)
+    {
+        $sql = 'INSERT INTO ' . self::TABLE_NAME . '
+                (`name`, `board_id`, `sort`)
+                VALUES
+                (:name, :board_id, (
+                   SELECT (MAX(sort) + 1) FROM ' . self::TABLE_NAME . ' AS `list2` WHERE `board_id` = :board_id
+                ))
+        ';
+
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':board_id', $boardId, PDO::PARAM_INT);
+        // $pdoStatement->bindValue(':sort', 2, PDO::PARAM_INT);
+
+        $result = $pdoStatement->execute();
+        
+        if (!$result) {
+            return false;
+        }
+
+        return $this->pdo->lastInsertId();
+    }
     
     /**
      * Get the value of id

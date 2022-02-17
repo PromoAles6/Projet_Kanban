@@ -15,7 +15,7 @@
   <link href="assets/css/list.css" rel="stylesheet" />
   <link href="assets/css/modal.css" rel="stylesheet" />
   <title>Hello, world!</title>
-  
+
 </head>
 
 <body>
@@ -26,24 +26,24 @@
       <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="titleList" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
-    
+
     <div id="listContainer" class="container-list">
-        <!-- Boucle des liste -->
-        <?php foreach ($lists as $list) : ?>
-          <div class="list sortable" data-list="<?= $list->getId() ?>">
-            
-            <h2 class="nodrag"><?= $list->getName() ?></h2>
-            
-            <!-- Boucle des cards -->
-            <?php foreach ($list->cards as $card) : ?>
-              <div class="card">
-                <div class="nodrag">
-                    <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
-                </div>
+      <!-- Boucle des liste -->
+      <?php foreach ($lists as $list) : ?>
+        <div class="list sortable" data-list="<?= $list->getId() ?>">
+
+          <h2 class="nodrag"><?= $list->getName() ?></h2>
+
+          <!-- Boucle des cards -->
+          <?php foreach ($list->cards as $card) : ?>
+            <div class="card">
+              <div class="nodrag">
+                <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
+              </div>
 
 
-                <!-- Modal with id -->
-                <!-- <div class="modal fade" id="modal<?= $card->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <!-- Modal with id -->
+              <!-- <div class="modal fade" id="modal<?= $card->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     
@@ -81,7 +81,7 @@
 
 
               <!-- Modal without id -->
-              <!-- <div class="modal fade" id="list<?=$list->getId()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <!-- <div class="modal fade" id="list<?= $list->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     
@@ -116,16 +116,16 @@
               </div> -->
 
 
-              </div>
-            <?php endforeach ?>
-            <!-- fin boucle cards -->
+            </div>
+          <?php endforeach ?>
+          <!-- fin boucle cards -->
 
-            <!-- <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?=$list->getId()?>" data-bs-whatever="@mdo">Ajouter une carte</button> -->
-            <input type="text" class="nodrag anchorBottom newlistitem form-control" name="newlistitem" placeholder="Ajouter une nouvelle carte" />
-          </div>
-        <?php endforeach ?>
-        <!-- fin boucle des listes -->
-      </div>
+          <!-- <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?= $list->getId() ?>" data-bs-whatever="@mdo">Ajouter une carte</button> -->
+          <input type="text" class="nodrag anchorBottom newlistitem form-control" name="newlistitem" placeholder="Ajouter une nouvelle carte" />
+        </div>
+      <?php endforeach ?>
+      <!-- fin boucle des listes -->
+    </div>
 
   </div>
 
@@ -134,7 +134,7 @@
 
   <!-- Script Jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
+
   <!-- jquery ui -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <!-- <script>
@@ -150,18 +150,18 @@
     })
     <script>
         $(document).ready(function() {
- 
+
             $("#submit").click(function() {
- 
+
                 var name = $("#title_list").val();
                 var board_id = 1;
                 var sort = 1;
- 
+
                 if(name==''= 'Y', board_id =='1'= 'Y', sort=='1') {
                     alert("Please fill all fields.");
                     return false;
                 }
- 
+
                 $.ajax({
                     type: "POST",
                     url: "store.php",
@@ -178,7 +178,7 @@
                         console.error(xhr);
                     }
                 });
-                 
+              
             });
         });
     </script>

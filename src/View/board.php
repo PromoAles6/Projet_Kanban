@@ -23,7 +23,7 @@ $db->Connect();
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="board.css">
+<link rel="stylesheet" href="assets/css/board.css">
 <title>kanban</title>
 </head>
 
@@ -89,6 +89,17 @@ Favoris
 </nav>
 <!--------------------------fin navbar------------------------->
 <h1>VOS ESPACES DE TRAVAIL</h1>
+
+<!-------------Ajout du formulaire pour add un projet---------->
+<form class="row gx-3 gy-2 align-items-center" method="POST" action="?page=createBoard">
+  <div class="col-sm-3">
+    <label class="visually-hidden" for="board_name">Nom du projet</label>
+    <input type="text" class="form-control" id="board_name" placeholder="Ajouter un projet" name="board_name">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </div>
+</form>
 <!---------------------------card------------------------------>
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <?php foreach($boards as $board): ?>

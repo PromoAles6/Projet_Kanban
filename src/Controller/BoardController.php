@@ -21,5 +21,20 @@ class BoardController extends AbstractController
             'boards' => $boards
         ]);
     }
-}
 
+    public function create()
+    {
+        $boardModel = new BoardModel();
+
+        // je récupère le name depuis le formulaire
+        $board_name = trim($_POST['board_name']);
+
+        if (!empty($board_name)) {
+            // je crée un board
+            $boardModel = new BoardModel();
+            $board_id = $boardModel->create($board_name);
+        }
+        header('Location:http://localhost/kanban/Projet_Kanban/');
+        exit();
+    }
+}

@@ -70,7 +70,8 @@ $('input[name="newlistitem"]').unbind().keyup(addNewCard);
 
 
 // ajouter une liste
-$('#newListForm').submit(function(event){
+$('#newListForm').submit(function(event)
+{
     // j'empêche de rechargement de la page
     event.preventDefault();
     // je récupère le nom de la liste dans l'input
@@ -96,20 +97,36 @@ $('#newListForm').submit(function(event){
     // j'ajoute l'event à mon formulaire
     $($newCardForm).unbind().keyup(addNewCard)
     
-    // je créé une nouvelle liste
-    $newList = $('<div>')
-    .addClass('list')
-    .addClass('sortable')
-    // j'ajoute le titre de la liste
-    .append('<h2 class="nodrag">'+listName+'</h2>')
-    // j'ajoute le formulaire d'ajout de card
-    .append($newCardForm)
-    ;
+            // je créé une nouvelle liste
+            const listname = $(this).val().trim();
+                if (listName == "") 
+                {
+                    return false;
+                }
+                const $board = $(this).parent('#listContainer');
+                const boardId = $board.data('board');
+            
+                $.ajax({
+                    method: "POST",
+                    url: "?page=createList",
+                    data: { name: listName, boardId: boardId }
+                })
+                // si la requête a fonctionnée, j'ajoute la liste au dom
+                .done(function( response ) 
+                    {
+                    $newList = $('<div>')
+                    .addClass('list')
+                    .addClass('sortable')
+                    // j'ajoute le titre de la liste
+                    .append(`<h2 class="nodrag">'${listName}'</h2>`)
+                    // j'ajoute le formulaire d'ajout de card
+                    .append($newCardForm);
 
-    // je la rajoute dans la div avec l'id listContainer
-    $("#listContainer").append($newList);
+                        // je la rajoute dans la div avec l'id listContainer
+                        $("#listContainer").append($newList);
 
-    // je vide l'input
-    $("#titleList").val('');
-})
-});   
+                        // je vide l'input
+                        $("#titleList").val('');
+                    });
+ });
+});

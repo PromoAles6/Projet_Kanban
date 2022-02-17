@@ -27,7 +27,7 @@
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
     
-    <div id="listContainer" class="container-list">
+    <div id="listContainer" class="container-list" data-list="10">
         <!-- Boucle des liste -->
         <?php foreach ($lists as $list) : ?>
           <div class="list sortable" data-list="<?= $list->getId() ?>">

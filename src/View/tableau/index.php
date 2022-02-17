@@ -41,7 +41,6 @@
                     <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
                 </div>
 
-<<<<<<< HEAD
     <div class="oversort">
       <input type="text" class="newlistinput" name="newlistname" placeholder="Ajouter une nouvelle liste" />
     </div>
@@ -83,26 +82,6 @@
                       </form>
                     </div>
 
-=======
-
-                <!-- Modal with id -->
-                <!-- <div class="modal fade" id="modal<?= $card->getId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    
-                    <div class="modal-header">
-                      <input class="modal-title" id="exampleModalLabel" placeholder="titre carte" value="<?= $card->getName() ?> "></input>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label"></label>
-                          <textarea class="form-control" id="message-text" placeholder="rentrez votre description"><?= $card->getContent() ?> </textarea>
-                        </div>
-                      </form>
-                    </div>
->>>>>>> keke_jquery
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">enregister</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">supprimer</button>
@@ -116,16 +95,11 @@
                           <button type="button" class="btn btn-danger">rouge</button>
                           <button type="button" class="btn btn-primary">bleu</button>
                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> keke_jquery
                       </div>
                     </div>
                   </div>
                 </div>
               </div> -->
-<<<<<<< HEAD
 
 
 
@@ -150,28 +124,6 @@
                       </form>
                     </div>
 
-=======
-
-
-
-              <!-- Modal without id -->
-              <!-- <div class="modal fade" id="list<?=$list->getId()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    
-                    <div class="modal-header">
-                      <input class="modal-title" id="exampleModalLabel" placeholder="titre carte" value=""></input>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label"></label>
-                          <textarea class="form-control" id="message-text" placeholder="rentrez votre description"></textarea>
-                        </div>
-                      </form>
-                    </div>
->>>>>>> keke_jquery
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">enregister</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">supprimer</button>
@@ -184,7 +136,6 @@
                           <button type="button" class="btn btn-danger">rouge</button>
                           <button type="button" class="btn btn-primary">bleu</button>
                         </div>
-<<<<<<< HEAD
 
                       </div>
                     </div>
@@ -193,25 +144,11 @@
                 </div>
               </div> -->
 
-=======
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
->>>>>>> keke_jquery
 
               </div>
             <?php endforeach ?>
             <!-- fin boucle cards -->
 
-<<<<<<< HEAD
-=======
-              </div>
-            <?php endforeach ?>
-            <!-- fin boucle cards -->
-
->>>>>>> keke_jquery
             <!-- <button type="button" class="btn btn-secondary" id="addCard" data-bs-toggle="modal" data-bs-target="#list<?=$list->getId()?>" data-bs-whatever="@mdo">Ajouter une carte</button> -->
             <input type="text" class="nodrag anchorBottom newlistitem form-control" name="newlistitem" placeholder="Ajouter une nouvelle carte" />
           </div>
@@ -228,11 +165,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <!-- jquery ui -->
-<<<<<<< HEAD
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-=======
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
->>>>>>> keke_jquery
   <!-- <script>
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
@@ -283,11 +216,7 @@
   </script> -->
 
   <!-- script pour le drag and drop -->
-<<<<<<< HEAD
   <script>
-=======
-  <script src="assets/js/board.js"></script>
->>>>>>> keke_jquery
 
   function updateListSortables(){
     $( ".sortable" ).sortable({

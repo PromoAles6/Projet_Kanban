@@ -47,6 +47,28 @@ class ModalModel
         return $result;
     }
 
+    public function create($name, $listId)
+    {
+        $sql = 'INSERT INTO ' . self::TABLE_NAME . '
+                (`name`, `list_id`, `sort`)
+                VALUES
+                (:name, :list_id, :sort)
+        ';
+
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':list_id', $listId, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':sort', 2, PDO::PARAM_INT);
+
+        $result = $pdoStatement->execute();
+        
+        if (!$result) {
+            return false;
+        }
+
+        return $this->pdo->lastInsertId();
+    }
+
     /**
      * Get the value of id
      */ 

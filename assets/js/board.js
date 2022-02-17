@@ -27,26 +27,41 @@ $("#listContainer").sortable({items: ":not(.nodrag)", placeholder: "sortable-pla
 function addNewCard(event) {
     // si la touche tapée est entrée (clavier normal ou numérique)
     if(event.key == "Enter" || event.keyCode == "13"){
-    // j'ajoute une nouvelle card juste avant l'input
-    const cardContent = $(this).val().trim();
-    if (cardContent == "") {
-        return false;
-    }
+        const $input = $(this);
 
-    // je créé une card
-    const newCard = `
-        <div class="card">
-            <div class="nodrag">
-                <button type="button" class="btn btn-">${cardContent}</button>
-            </div>
-        </div>      
-    `;
+        // j'ajoute une nouvelle card juste avant l'input
+        const cardContent = $(this).val().trim();
+        if (cardContent == "") {
+            return false;
+        }
 
-    // j'ajoute la card
-    $(this).before(newCard);
+        const $list = $(this).parent('.list');
+        const listId = $list.data('list');
 
-    // je vide l'input
-    $(this).val('');
+        // j'ajoute ma carte à la base de donnée
+        $.ajax({
+            method: "POST",
+            url: "?page=createCard",
+            data: { name: cardContent, listId: listId }
+        })
+        // si la requête a fonctionnée, j'ajoute la card au dom
+        .done(function( response ) {
+            // je créé une card
+            const newCard = `
+                <div class="card">
+                    <div class="nodrag">
+                        <button type="button" class="btn btn-">${cardContent}</button>
+                    </div>
+                </div>      
+            `;
+    
+            // j'ajoute la card
+            $($input).before(newCard);
+            // je vide l'input
+            $($input).val('');
+        })
+        ;
+
     }
 }
 

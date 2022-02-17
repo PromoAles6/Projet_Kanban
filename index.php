@@ -34,7 +34,11 @@ class Application
         'connection' => [
             'controller' => 'LoginController',
             'method' => 'index'
-        ]
+        ],
+        'createCard' => [
+            'controller' => 'ModalController',
+            'method' => 'create'
+        ],
     ];
 
     const DEFAULT_ROUTE = 'projets';

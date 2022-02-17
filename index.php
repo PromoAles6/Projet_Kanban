@@ -42,7 +42,7 @@ class Application
         'createList' => [
             'controller' => 'ListController',
             'method' => 'create'
-        ],
+        ]
     ];
 
     const DEFAULT_ROUTE = 'projets';

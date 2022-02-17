@@ -81,12 +81,14 @@ $(document).ready(function () {
             return false;
         }
 
+        const $board = $('#listContainer');
+        const boardId = $board.data('board');
 
         // j'ajoute ma liste à la base de donnée
         $.ajax({
             method: "POST",
             url: "?page=createList",
-            data: { name: listName, boardId: 1 }
+            data: { name: listName, boardId: boardId }
         })
             // si la requête a fonctionnée, j'ajoute la liste au dom
             .done(function (response) {
@@ -104,7 +106,6 @@ $(document).ready(function () {
                 // j'ajoute l'event à mon formulaire
                 $($newCardForm).unbind().keyup(addNewCard)
 
-
                 // je créé une nouvelle liste
                 $newList = $('<div>')
                     .addClass('list')
@@ -115,14 +116,11 @@ $(document).ready(function () {
                     .append($newCardForm)
                     ;
 
-
                 // je la rajoute dans la div avec l'id listContainer
                 $("#listContainer").append($newList);
 
                 // je vide l'input
                 $("#titleList").val('');
-            });
-
+            })
     })
-
 });   

@@ -5,15 +5,7 @@ box-sizing: border-box;
 
 }
 
-.list-group{
-    width: 50%;
-    margin: 2% auto;
-    border: 1px  solid #000;
-    border-radius: 3px;
-    padding: 20px ;
-background-color: grey;
-text-align: center;
-}
+
 
 .list-group button {
 margin: 1%;

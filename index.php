@@ -30,6 +30,18 @@ class Application
         'error404' => [
             'controller' => 'ErrorController',
             'method' => 'error404'
+        ],
+        'connection' => [
+            'controller' => 'LoginController',
+            'method' => 'index'
+        ],
+        'createCard' => [
+            'controller' => 'ModalController',
+            'method' => 'create'
+        ],
+        'createList' => [
+            'controller' => 'ListController',
+            'method' => 'create'
         ]
     ];
 

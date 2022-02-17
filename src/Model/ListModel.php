@@ -43,7 +43,7 @@ class ListModel{
                 (`name`, `board_id`, `sort`)
                 VALUES
                 (:name, :board_id, (
-                   SELECT (MAX(sort) + 1) FROM ' . self::TABLE_NAME . ' AS `list2` WHERE `board_id` = :board_id
+                   SELECT (IFNULL(MAX(sort), 0) + 1) FROM ' . self::TABLE_NAME . ' AS `list2` WHERE `board_id` = :board_id
                 ))
         ';
 

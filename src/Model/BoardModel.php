@@ -35,6 +35,26 @@ class BoardModel
         return $result;
     }
 
+    public function create($name)
+    {
+        $sql = 'INSERT INTO ' . self::TABLE_NAME . '
+                (`name`)
+                VALUES
+                (:name)
+        ';
+
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
+        
+        $result = $pdoStatement->execute();
+        
+        if (!$result) {
+            return false;
+        }
+
+        return $this->pdo->lastInsertId();
+    }
+
     /**
      * Get the value of id
      */ 

@@ -42,6 +42,10 @@ class Application
         'createList' => [
             'controller' => 'ListController',
             'method' => 'create'
+        ],
+        'createBoard' => [
+            'controller' => 'BoardController',
+            'method' => 'create',
         ]
     ];
 

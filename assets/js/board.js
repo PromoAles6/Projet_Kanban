@@ -82,34 +82,48 @@ $('#newListForm').submit(function(event){
     return false;
     }
 
-    // je créé un formulaire d'ajout de card
-    $newCardForm = $('<input>')
-    // je set les attribut de mon input
-    .attr({
-        type: 'text',
-        class: 'nodrag anchorBottom newlistitem form-control',
-        name: 'newlistitem',
-        placeholder: 'Ajouter une nouvelle carte'
+    
+
+
+    // j'ajoute ma liste à la base de donnée
+    $.ajax({
+        method: "POST",
+        url: "?page=createList",
+        data: { name: listName, boardId: 1 }
+    })
+    // si la requête a fonctionnée, j'ajoute la card au dom
+    .done(function( response ) {
+        // je créé un formulaire d'ajout de card
+        $newCardForm = $('<input>')
+        // je set les attribut de mon input
+        .attr({
+            type: 'text',
+            class: 'nodrag anchorBottom newlistitem form-control',
+            name: 'newlistitem',
+            placeholder: 'Ajouter une nouvelle carte'
+        })
+        ;
+
+        // j'ajoute l'event à mon formulaire
+        $($newCardForm).unbind().keyup(addNewCard)
+
+        // je créé une nouvelle liste
+        $newList = $('<div>')
+        .addClass('list')
+        .addClass('sortable')
+        // j'ajoute le titre de la liste
+        .append('<h2 class="nodrag">'+listName+'</h2>')
+        // j'ajoute le formulaire d'ajout de card
+        .append($newCardForm)
+        ;
+
+        // je la rajoute dans la div avec l'id listContainer
+        $("#listContainer").append($newList);
+
+        // je vide l'input
+        $("#titleList").val('');
     })
     ;
 
-    // j'ajoute l'event à mon formulaire
-    $($newCardForm).unbind().keyup(addNewCard)
-    
-    // je créé une nouvelle liste
-    $newList = $('<div>')
-    .addClass('list')
-    .addClass('sortable')
-    // j'ajoute le titre de la liste
-    .append('<h2 class="nodrag">'+listName+'</h2>')
-    // j'ajoute le formulaire d'ajout de card
-    .append($newCardForm)
-    ;
-
-    // je la rajoute dans la div avec l'id listContainer
-    $("#listContainer").append($newList);
-
-    // je vide l'input
-    $("#titleList").val('');
 })
 });   

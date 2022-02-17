@@ -30,7 +30,7 @@
     <div id="listContainer" class="container-list">
         <!-- Boucle des liste -->
         <?php foreach ($lists as $list) : ?>
-          <div class="list sortable" data-list="<?= $list->getId() ?>">
+          <div class="list sortable" data-list="<?= $list->getId() ?>" data-board="<?= $list->getBoard_id() ?>">
             
             <h2 class="nodrag"><?= $list->getName() ?></h2>
             

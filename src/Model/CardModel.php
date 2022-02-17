@@ -5,7 +5,7 @@ namespace App\Model;
 use PDO;
 use App\database\Database;
 
-class ModalModel
+class CardModel
 {
     protected $id;
 
@@ -52,13 +52,14 @@ class ModalModel
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
                 (`name`, `list_id`, `sort`)
                 VALUES
-                (:name, :list_id, :sort)
+                (:name, :list_id, (
+                    SELECT (IFNULL(MAX(sort), 0) + 1) FROM ' . self::TABLE_NAME . ' AS `card2` WHERE `list_id` = :list_id
+                 ))
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
         $pdoStatement->bindValue(':list_id', $listId, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':sort', 2, PDO::PARAM_INT);
 
         $result = $pdoStatement->execute();
         

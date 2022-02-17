@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AbstractController;
-use App\Model\ModalModel;
+use App\Model\CardModel;
 
 class ModalController extends AbstractController
 {
@@ -15,7 +15,7 @@ class ModalController extends AbstractController
         // vérifier que l'utilisateur a les droits
         // etc...
 
-        $cardModel= new ModalModel();
+        $cardModel= new CardModel();
         $cards = $cardModel->findAll();
         $this->render('modal.php', [
             'cards' => $cards
@@ -31,7 +31,7 @@ class ModalController extends AbstractController
         $name = $_POST['name'];
 
         // je crée une card
-        $cardModel= new ModalModel();
+        $cardModel= new CardModel();
         $newCardId = $cardModel->create($name, $listId);
 
         // je renvoie l'id de la card en json

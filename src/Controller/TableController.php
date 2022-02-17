@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ListModel;
-use App\Model\ModalModel;
+use App\Model\CardModel;
 use App\Controller\AbstractController;
 
 class TableController extends AbstractController
@@ -16,9 +16,9 @@ class TableController extends AbstractController
         // vérifier que l'utilisateur a les droits
         // etc...
         $listModel = new ListModel();
-        $modalModel = new ModalModel();
+        $cardModel = new CardModel();
 
-        $cards = $modalModel->findAll();
+        $cards = $cardModel->findAll();
         $lists = $listModel->findAll();
 
         // Pour chaque liste

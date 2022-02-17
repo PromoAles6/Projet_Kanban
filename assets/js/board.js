@@ -15,7 +15,6 @@ function updateListSortables(){
     })
 }
 
-
 $(document).ready(function(){
     // on rend les card sortable
     updateListSortables();

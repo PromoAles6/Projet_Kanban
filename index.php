@@ -39,6 +39,10 @@ class Application
             'controller' => 'ModalController',
             'method' => 'create'
         ],
+        'createList' => [
+            'controller' => 'TableController',
+            'method' => 'create'
+        ],
     ];
 
     const DEFAULT_ROUTE = 'projets';

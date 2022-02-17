@@ -30,6 +30,7 @@ $('#addCard')
   
 		  //Le format de réponse attendu
 		  dataType : "text",
-	  })
+	  });
+
 
   });

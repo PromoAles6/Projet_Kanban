@@ -44,7 +44,6 @@ class TableController extends AbstractController
 
             
         }
-        
 
         $this->render('tableau/index.php', [
             'lists' => $lists,
@@ -52,22 +51,5 @@ class TableController extends AbstractController
         ]);
     }
 
-
-    public function create()
-    {
-        // je récupère le name et le board_id depuis le formulaire
-        // soumis en javascript
-        $boardId = $_POST['boardId'];
-        $name = $_POST['name'];
-
-        // je crée une list
-        $listModel= new listModel();
-        $newListId = $listModel->create($name, $boardId);
-
-        // je renvoie l'id de la liste en json
-        $this->sendJson([
-            'id' => $newListId
-        ]);
-    }
 }
 

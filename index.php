@@ -40,7 +40,7 @@ class Application
             'method' => 'create'
         ],
         'createList' => [
-            'controller' => 'TableController',
+            'controller' => 'ListController',
             'method' => 'create'
         ],
     ];

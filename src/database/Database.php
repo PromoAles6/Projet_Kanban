@@ -9,7 +9,6 @@ class Database
 {   
     private $config;
     private $pdo;
-
     /**
      * THE CONSTRUCTOR
      */

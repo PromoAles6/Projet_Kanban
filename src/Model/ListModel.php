@@ -48,7 +48,7 @@ class ListModel{
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':name', $name, PDO::PARAM_STR);
         $pdoStatement->bindValue(':board_id', $boardId, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':sort', 2, PDO::PARAM_INT);
+        // $pdoStatement->bindValue(':sort', 2, PDO::PARAM_INT);
 
         $result = $pdoStatement->execute();
         
@@ -57,10 +57,7 @@ class ListModel{
         }
 
         return $this->pdo->lastInsertId();
-        
     }
-
-
     
     /**
      * Get the value of id

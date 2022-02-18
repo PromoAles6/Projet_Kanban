@@ -1,32 +1,31 @@
 // fonction pour rendre les cards sortable
-function updateListSortables(){
-    $( ".sortable" ).sortable({
+function updateListSortables() {
+    $(".sortable").sortable({
         connectWith: ".sortable",
         items: ":not(.nodrag)",
         placeholder: "sortable-placeholder ui-corner-all",
-        
-        change: function() {
+        change: function () {
             console.log('change');
             var list = $(this).closest('.sortable');
             var anchorBottom = $(list).find('.anchorBottom');
             $(list).append($(anchorBottom).detach());
         }
-    })
+    });
 }
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     // on rend les card sortable
     updateListSortables();
 
     // on rend les listes, sortables
-    $("#listContainer").sortable({items: ":not(.nodrag)", placeholder: "sortable-placeholder" });
+    $("#listContainer").sortable({ items: ":not(.nodrag)", placeholder: "sortable-placeholder" });
 
 
     // function pour ajouter une card
     function addNewCard(event) {
         // si la touche tapée est entrée (clavier normal ou numérique)
-        if(event.key == "Enter" || event.keyCode == "13"){
+        if (event.key == "Enter" || event.keyCode == "13") {
             const $input = $(this);
 
             // j'ajoute une nouvelle card juste avant l'input
@@ -44,22 +43,24 @@ $(document).ready(function(){
                 url: "?page=createCard",
                 data: { name: cardContent, listId: listId }
             })
-            // si la requête a fonctionnée, j'ajoute la card au dom
-            .done(function( response ) {
-                // je créé une card
-                const newCard = `
-                    <div class="card">
-                        <div class="nodrag">
-                            <button type="button" class="btn btn-">${cardContent}</button>
-                        </div>
-                    </div>      
-                `;
-        
-                // j'ajoute la card
-                $($input).before(newCard);
-                // je vide l'input
-                $($input).val('');
-            })
+                // si la requête a fonctionnée, j'ajoute la card au dom
+                .done(function (response) {
+                    // je créé une card
+                    const newCard = `
+                <div class="card">
+                    <div class="nodrag">
+                        <button type="button" class="btn btn-">${cardContent}</button>
+                    </div>
+                </div>      
+            `;
+
+                    // j'ajoute la card
+                    $($input).before(newCard);
+                    // je vide l'input
+                    $($input).val('');
+                })
+                ;
+
         }
     }
 
@@ -68,57 +69,57 @@ $(document).ready(function(){
 
 
     // ajouter une liste
-    $('#newListForm').submit(function(event){
+    $('#newListForm').submit(function (event) {
         // j'empêche de rechargement de la page
         event.preventDefault();
         // je récupère le nom de la liste dans l'input
         const listName = $("#titleList").val().trim();
 
         // si le nom de la liste est vide, je ne fais rien
-        if(listName == "")
-        {
-        return false;
+        if (listName == "") {
+            return false;
         }
 
         const $board = $('#listContainer');
         const boardId = $board.data('board');
-        console.log($board);
+
         // j'ajoute ma liste à la base de donnée
         $.ajax({
             method: "POST",
             url: "?page=createList",
             data: { name: listName, boardId: boardId }
         })
-        // si la requête a fonctionnée, j'ajoute la liste au dom
-        .done(function( response ) {
-        
-        // je créé un formulaire d'ajout de card
-            $newCardForm = $('<input>')
-            // je set les attribut de mon input
-            .attr({
-                type: 'text',
-                class: 'nodrag anchorBottom newlistitem form-control',
-                name: 'newlistitem',
-                placeholder: 'Ajouter une nouvelle carte'
+            // si la requête a fonctionnée, j'ajoute la liste au dom
+            .done(function (response) {
+                // je créé un formulaire d'ajout de card
+                $newCardForm = $('<input>')
+                    // je set les attribut de mon input
+                    .attr({
+                        type: 'text',
+                        class: 'nodrag anchorBottom newlistitem form-control',
+                        name: 'newlistitem',
+                        placeholder: 'Ajouter une nouvelle carte'
+                    })
+                    ;
+
+                // j'ajoute l'event à mon formulaire
+                $($newCardForm).unbind().keyup(addNewCard)
+
+                // je créé une nouvelle liste
+                $newList = $('<div>')
+                    .addClass('list')
+                    .addClass('sortable')
+                    // j'ajoute le titre de la liste
+                    .append('<h2 class="nodrag">' + listName + '</h2>')
+                    // j'ajoute le formulaire d'ajout de card
+                    .append($newCardForm)
+                    ;
+
+                // je la rajoute dans la div avec l'id listContainer
+                $("#listContainer").append($newList);
+
+                // je vide l'input
+                $("#titleList").val('');
             })
-
-            // j'ajoute l'event à mon formulaire
-            $($newCardForm).unbind().keyup(addNewCard)
-            
-            // je créé une nouvelle liste
-            $newList = $('<div>')
-            .addClass('list')
-            .addClass('sortable')
-            // j'ajoute le titre de la liste
-            .append('<h2 class="nodrag">'+listName+'</h2>')
-            // j'ajoute le formulaire d'ajout de card
-            .append($newCardForm)
-
-            // je la rajoute dans la div avec l'id listContainer
-            $("#listContainer").append($newList);
-
-            // je vide l'input
-            $("#titleList").val('');
-        });
     })
 });   

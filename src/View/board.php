@@ -106,7 +106,7 @@ Favoris
     <div class="col">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title"><?= $board->getName() ?></h5>
+          <h5 class="card-title"><a href="?page=tableau&board=<?= $board->getId() ?>" class="stretched-link"><?= $board->getName() ?></a></h5>
           <p class="card-text"></p>
         </div>
       </div>

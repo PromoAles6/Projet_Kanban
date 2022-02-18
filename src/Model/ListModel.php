@@ -37,6 +37,25 @@ class ListModel{
         return $result;
     }
 
+    public function findByBoard($boardId)
+    {
+        $sql = 'SELECT
+                `id`
+                ,`name`
+                ,`sort`
+                ,`board_id`
+                FROM ' . self::TABLE_NAME . '
+                WHERE `board_id` = :board_id
+                ORDER BY `sort` ASC;
+        ';
+
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->bindValue(':board_id', $boardId, PDO::PARAM_INT);
+        $result = $pdoStatement->execute();
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
+    }
+
     public function create($name, $boardId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '

@@ -14,20 +14,21 @@
   <link href="assets/css/style.css" rel="stylesheet" />
   <link href="assets/css/list.css" rel="stylesheet" />
   <link href="assets/css/modal.css" rel="stylesheet" />
-  <title>Hello, world!</title>
+  <title><?= $board->getName() ?></title>
   
 </head>
 
 <body>
 
   <div class="container-xl">
-
+    <a href="?page=projets">Page d'accueil</a>
+    <h1><?= $board->getName() ?></h1>
     <form id="newListForm" method="POST" action="" class="add-list">
       <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="titleList" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
     
-    <div id="listContainer" class="container-list" data-board="1">
+    <div id="listContainer" class="container-list" data-board="<?= $board->getId() ?>">
         <!-- Boucle des liste -->
         <?php foreach ($lists as $list) : ?>
           <div class="list sortable" data-list="<?= $list->getId() ?>">

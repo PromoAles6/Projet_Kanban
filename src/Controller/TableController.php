@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Model\ListModel;
 use App\Model\CardModel;
+use App\Model\BoardModel; 
 use App\Controller\AbstractController;
 
 class TableController extends AbstractController
 {
     public function index()
-    {
+    {   
+        $boardId = $_GET['board'];
+        // dd($boardId);
         // ma logique métier ici
         // exemple récupérer des données en BDD
         // traiter des formulaire
@@ -17,10 +20,12 @@ class TableController extends AbstractController
         // etc...
         $listModel = new ListModel();
         $cardModel = new CardModel();
+        $boardModel = new BoardModel();
 
         $cards = $cardModel->findAll();
-        $lists = $listModel->findAll();
-
+        $lists = $listModel->findByBoard($boardId);
+        $board = $boardModel->findById($boardId);
+        
         // Pour chaque liste
         foreach($lists as $key => $list) {
             // j'initialise une liste de cards vides
@@ -45,7 +50,8 @@ class TableController extends AbstractController
 
         $this->render('tableau/index.php', [
             'lists' => $lists,
-            'cards' => $cards
+            'cards' => $cards,
+            'board' => $board
         ]);
     }
 }

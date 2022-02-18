@@ -35,6 +35,23 @@ class BoardModel
         return $result;
     }
 
+    public function findById($id)
+    {
+        $sql = 'SELECT
+                `id`
+                ,`name`
+                FROM ' . self::TABLE_NAME . '
+                WHERE `id` = :id
+                ORDER BY `id` ASC;
+        ';
+
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $result = $pdoStatement->execute();
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
+    }
+
     public function create($name)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '

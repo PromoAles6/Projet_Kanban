@@ -26,22 +26,6 @@
       <input type="text" name="title_list" placeholder="Titre de la liste" class="form-control" id="titleList" aria-describedby="emailHelp" />
       <button type="submit" class="btn btn-primary" class="addList">Ajouter</button>
     </form>
-<<<<<<< HEAD
-
-    <div id="listContainer" class="container-list">
-      <!-- Boucle des liste -->
-      <?php foreach ($lists as $list) : ?>
-        <div class="list sortable" data-list="<?= $list->getId() ?>">
-
-          <h2 class="nodrag"><?= $list->getName() ?></h2>
-
-          <!-- Boucle des cards -->
-          <?php foreach ($list->cards as $card) : ?>
-            <div class="card">
-              <div class="nodrag">
-                <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
-              </div>
-=======
     
     <div id="listContainer" class="container-list" data-board="1">
         <!-- Boucle des liste -->
@@ -56,7 +40,6 @@
                 <div class="nodrag">
                     <button type="button" class="btn btn-<?= $card->getColor() ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $card->getId() ?>" data-bs-whatever="@mdo"><?= $card->getName() ?></button>
                 </div>
->>>>>>> other_greg_jquery
 
 
               <!-- Modal with id -->

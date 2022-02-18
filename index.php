@@ -42,11 +42,7 @@ class Application
         'createList' => [
             'controller' => 'ListController',
             'method' => 'create'
-<<<<<<< HEAD
-        ],
-=======
         ]
->>>>>>> other_greg_jquery
     ];
     
 

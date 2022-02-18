@@ -22,14 +22,14 @@ class TableController extends AbstractController
         $lists = $listModel->findAll();
 
         // Pour chaque liste
-        foreach($lists as $key => $list) {
+        foreach ($lists as $key => $list) {
             // j'initialise une liste de cards vides
             $list_cards = [];
 
             // Pour chaque card
-            foreach($cards as $card) {
+            foreach ($cards as $card) {
                 // si card_id (l'id de la liste dans la card) est égal à l'id de la liste
-                if($card->getList_id() == $list->getId()) {
+                if ($card->getList_id() == $list->getId()) {
                     // j'ajoute la card à la liste de cards
                     $list_cards[] = $card;
                 }
@@ -48,5 +48,21 @@ class TableController extends AbstractController
             'cards' => $cards
         ]);
     }
-}
 
+    public function create()
+    {
+        // je récupère le name et le list_id depuis le formulaire
+        // soumis en javascript
+        $boardId = $_POST['boardId'];
+        $name = $_POST['name'];
+
+        // je crée une card
+        $listModel = new ListModel();
+        $newListId = $listModel->create($name, $boardId);
+
+        // je renvoie l'id de la card en json
+        $this->sendJson([
+            'id' => $newboardId
+        ]);
+    }
+}

@@ -22,7 +22,7 @@ class ModalModel
     protected $list_id;
     
     const TABLE_NAME = 'card';
-
+   
     public function __construct()
     {
         $database = new Database();
